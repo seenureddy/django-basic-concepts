@@ -1,0 +1,6 @@
+Django==1.6.5
+argparse==1.2.1
+django-jsonfield==0.9.13
+eventlog==0.8.0
+psycopg2==2.5.4
+wsgiref==0.1.2
