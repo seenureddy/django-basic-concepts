@@ -1,0 +1,15 @@
+{% extends "basic_dj/base.html" %}
+
+{% block content %}
+	<h3>Publisher details</h3>
+	<p>Name</p>
+    {{ publisher.name }}
+    <p>Address</p>
+    {{ publisher.address }}
+    <p>City</p>
+    {{ publisher.city }}
+    {{ publisher.state}}
+    {{ publisher.state_province }}
+    {{ publisher.country }}
+    <a href="{{ publisher.website }}">website url	</a>
+{% endblock %}
