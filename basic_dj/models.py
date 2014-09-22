@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 
 class BookManager(models.Model):
@@ -13,9 +14,19 @@ class Publisher(models.Model):
     state_province = models.CharField(max_length=30)
     country = models.CharField(max_length=50)
     website = models.URLField()
+    slug = models.SlugField(unique=True)
+    publisher_file = models.FileField(upload_to='publisher_upload_file_name')
 
     def __unicode__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        return super(Publisher, self).save(*args, **kwargs)
+
+    def publisher_upload_file_name(self, publisher_doc):
+        return '/'.join('content', self.name, publisher_doc)
 
 
 class Author(models.Model):
