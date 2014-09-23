@@ -8,4 +8,6 @@ install:
 
 before_script:
   - ./lint.sh
-  
+
+script:
+  - nosetests
