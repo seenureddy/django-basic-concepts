@@ -1,6 +1,6 @@
 DJANGO CONCEPTS
 ---------------
-[![Build Status](https://travis-ci.org/seenureddy/django_concepts.png?branch=develop)](https://travis-ci.org/seenureddy/djnago_concepts)
+[![Build Status](https://travis-ci.org/seenureddy/django_concepts.png?branch=master)](https://travis-ci.org/seenureddy/djnago_concepts)
 
 
 - Model
