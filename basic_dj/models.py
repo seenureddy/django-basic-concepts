@@ -3,11 +3,13 @@ from django.utils.text import slugify
 
 
 class BookManager(models.Model):
+    """ Book title counts """
     def title_count(self, keyword):
         return self.filter(title__icontains=keyword).count()
 
 
 class Publisher(models.Model):
+    """ Create Publisher with their credentials """
     name = models.CharField(max_length=30)
     address = models.CharField(max_length=50)
     city = models.CharField(max_length=60)
@@ -30,6 +32,7 @@ class Publisher(models.Model):
 
 
 class Author(models.Model):
+    """ Author credentials """
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=40, blank=True)
     email = models.EmailField(blank=True)
@@ -39,6 +42,7 @@ class Author(models.Model):
 
 
 class Book(models.Model):
+    """ Book credentials """
     title = models.CharField(max_length=100)
     author = models.ManyToManyField(Author)
     publisher = models.ForeignKey(Publisher)
