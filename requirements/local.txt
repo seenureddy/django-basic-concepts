@@ -1,0 +1,5 @@
+-r base.txt
+
+django-extensions==1.4.0
+pep8
+pylint 
