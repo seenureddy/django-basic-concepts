@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils.text import slugify
+from .slugify import unique_slugify
 
 
 class BookManager(models.Model):
@@ -24,7 +24,7 @@ class Publisher(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.name)
+            unique_slugify(self, self.name)
         return super(Publisher, self).save(*args, **kwargs)
 
     def publisher_upload_file_name(self, publisher_doc):

@@ -10,5 +10,5 @@ urlpatterns = patterns('',
                        url(r'^admin/', include(admin.site.urls)),
                        url(r'^publisher/', include('basic_dj.urls')), )
 
-urlpatterns += urlpatterns + static(settings.MEDIA_URL,
-                                    document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL,
+                      document_root=settings.MEDIA_ROOT)

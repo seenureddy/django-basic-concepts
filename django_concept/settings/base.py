@@ -1,5 +1,8 @@
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+import dj_database_url
+
+PROJECT_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -10,9 +13,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY_CONCEPT_DJ')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -50,16 +53,23 @@ WSGI_APPLICATION = 'django_concept.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.environ.get('DATABASES_NAME'),
+#         'USER': os.environ.get('DATABASES_USER'),
+#         'PASSWORD': os.environ.get('DATABASES_PASSWORD'),
+#         'HOST': '127.0.0.1',
+#         'PORT': '',
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DATABASES_NAME'),
-        'USER': os.environ.get('DATABASES_USER'),
-        'PASSWORD': os.environ.get('DATABASES_PASSWORD'),
-        'HOST': '',
-        'PORT': '',
-    }
+    'default': dj_database_url.config(
+        env='DATABASES_URL',
+        default='sqlite:////{0}'.format(os.path.join(BASE_DIR, 'db.sqlite3')))
 }
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
@@ -81,7 +91,7 @@ MEDIA_URL = '/site_media/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_ROOT = ''
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_URL = '/static/'
 

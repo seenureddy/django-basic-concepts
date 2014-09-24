@@ -1,8 +1,10 @@
 from .base import *
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+DEBUG = False
+TEMPLATE_DEBUG = True
 
 INSTALLED_APPS += (
     'django_extensions',
 )
+
+ALLOWED_HOSTS = ['*']
