@@ -3,16 +3,16 @@ from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from django.template.loader import render_to_string
-from basic_dj import forms as pforms
+from .forms import PublisherForm, BookForm
 from .models import Publisher
 
 
 def create_publisher(request):
     """ creates publisher form """
     # if request.method == 'GET':
-    create_form = pforms.PublisherForm()
+    create_form = PublisherForm()
     if request.method == 'POST':
-        create_form = pforms.PublisherForm(request.POST, request.FILES)
+        create_form = PublisherForm(request.POST, request.FILES)
         if create_form.is_valid():
             publisher = create_form.save()
             return HttpResponseRedirect(reverse('basic_dj_detail',
@@ -33,4 +33,12 @@ def error404(request):
 
 
 def create_book(request):
-    
+    """ creates Book form """
+    book_form = BookForm()
+    if request.method == 'POST':
+        book_form = BookForm(request.POST)
+        if book_form.is_valid():
+            book = book_form.save()
+    context_instance = {"book_form": book_form} 
+    return render(request,
+                  'basic_dj/create_book.html', context_instance)

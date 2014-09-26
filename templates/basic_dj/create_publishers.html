@@ -8,8 +8,6 @@
                 {% csrf_token %}
                 <h2 class="form-register-heading">Register Here</h2>
                  <div class="form-group">
-                 
-                {{ form.non_field_errors }}
                  <div class="form-group has-success has-warning has-error">
                  	{{ create_form.name.errors }}
                  	<label for="publishername" class="col-sm-2 control-form">Name {{ create_form.name }}
