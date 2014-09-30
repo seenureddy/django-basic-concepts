@@ -1,0 +1,21 @@
+{% extends "basic_dj/base.html" %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-offset 2 col-sm-10">
+			<form class="form-horizontal" method="post" role="form" action=".">
+				{% csrf_token %}
+				<h2 class="form-regarding-heading">Create Author Here</h2>
+				{% for field in author_form %}
+				<div class="control-from form-group col-xs-12">
+					{{ field.errors }}
+					{{ field.label_tag }} {{ field }}
+				</div>
+				{% endfor %}
+				<button  type="submit" class="btn btn-success">Submit</button>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
