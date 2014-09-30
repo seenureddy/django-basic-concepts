@@ -1,0 +1,22 @@
+{% extends "basic_dj/base.html" %}
+
+{% block content %}
+<div class="books">
+	{% for book in books.object_list %}
+         <div class="title"><h4>Book Title: {{ book.title|upper }} </h4></div>
+         <ul>
+         	<div class="time">Published Date: {{ book.publication_date }}</div>
+         	<div class="publisher">Publisher: {{ book.publisher }}s</div>
+         </ul>
+	{% endfor %}
+	{% if books.object_list and books.paginator.num_pages > 1 %}
+		{% if books.has_previous %}
+	         <a href="?page={{ books.previous_page_number }}">previous &lt;&lt;</a>
+		{% endif %}
+		&nbsp; Page {{ books.number }} of {{ books.paginator.num_pages }}
+		{% if books.has_next %}
+			<a href="?page={{ books.next_page_number }}">next &gt; &gt;</a>
+		{% endif %}
+	{% endif %}
+</div>
+{% endblock%}

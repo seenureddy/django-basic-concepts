@@ -1,8 +1,9 @@
 from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render_to_response
 from django.template.loader import render_to_string
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import PublisherForm, BookForm, AuthorForm
 from .models import Publisher, Book
 
@@ -70,3 +71,19 @@ def create_author(request):
     context_instance = {"author_form": author_form}
     return render(request,
                   'basic_dj/create_author.html', context_instance)
+
+
+def book_list(request):
+    """ show list of books for authors """
+    books = Book.objects.all().order_by('-publication_date')
+    paginator = Paginator(books, 2)      # show book list per page 2
+    page = request.GET.get('page')
+    try:
+        books = paginator.page(page)
+    except PageNotAnInteger:
+        books = paginator.page('1')
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results
+        books = paginator.page(paginator.num_pages)
+    return render_to_response('basic_dj/book_list.html',
+                              {'books': books})
