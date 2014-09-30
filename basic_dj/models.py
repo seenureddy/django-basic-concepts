@@ -36,9 +36,13 @@ class Author(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=40, blank=True)
     email = models.EmailField(blank=True)
+    author_slug = models.SlugField(unique=True)
 
     def __unicode__(self):
         return "%s - %s" % (self.first_name, self.last_name)
+
+    # def save(self, *args, **kwargs):
+    #     return super(Author, self).save(*args, **kwargs)
 
 
 class Book(models.Model):
@@ -48,6 +52,12 @@ class Book(models.Model):
     publisher = models.ForeignKey(Publisher)
     publication_date = models.DateField()
     objects = BookManager()
+    slug = models.SlugField(unique=True)
 
     def __unicode__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            unique_slugify(self, self.title)
+        return super(Book, self).save(*args, **kwargs)

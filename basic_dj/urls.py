@@ -8,4 +8,7 @@ urlpatterns = patterns('basic_dj.views',
                        url(r'^create-book/$',
                            'create_book', name='create_book'),
                        url(r'^detail-book/(?P<book_slug>[-\w]+)/$',
-                           'detail_book', name='detail_book'), )
+                           'detail_book', name='detail_book'),
+                       url(r'^create-author/$',
+                           'create_author', name='create_author'),
+                       url(r'^books/$', 'list_books', name='list_books'), )
