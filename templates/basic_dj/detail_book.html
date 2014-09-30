@@ -1,0 +1,12 @@
+{% extends "basic_dj/base.html" %}
+
+{% block content %}
+<h3>Book details</h3>
+<p>Title: {{ book.title }}</p>
+<h4>Authors:</h4>
+{% for author in authors %}
+    <p>{{  author.first_name  }} {{ author.last_name }}</p>
+{% endfor %}
+<p>Publisher: {{ book.publisher }}</p>
+<p>Publication Date: {{ book.publication_date }}</p>
+{% endblock %}
