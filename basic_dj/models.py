@@ -34,21 +34,18 @@ class Publisher(models.Model):
 class Author(models.Model):
     """ Author credentials """
     first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=40, blank=True)
+    last_name = models.CharField(max_length=4)
     email = models.EmailField(blank=True)
     author_slug = models.SlugField(unique=True)
 
     def __unicode__(self):
         return "%s - %s" % (self.first_name, self.last_name)
 
-    # def save(self, *args, **kwargs):
-    #     return super(Author, self).save(*args, **kwargs)
-
 
 class Book(models.Model):
     """ Book credentials """
     title = models.CharField(max_length=100)
-    author = models.ManyToManyField(Author)
+    authors = models.ManyToManyField(Author, related_name='books')
     publisher = models.ForeignKey(Publisher)
     publication_date = models.DateField()
     objects = BookManager()
