@@ -3,7 +3,7 @@
 {% block content %}
 <div class="books">
 	{% for book in books.object_list %}
-         <div class="title"><h4>Book Title: {{ book.title|upper }} </h4></div>
+         <div class="title col-sm-offset-2 col-sm-8"><h4>Book Title: {{ book.title|upper }} </h4></div>
          <ul>
          	<div class="time">Published Date: {{ book.publication_date }}</div>
          	<div class="publisher">Publisher: {{ book.publisher }}s</div>
