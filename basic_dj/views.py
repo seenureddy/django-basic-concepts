@@ -53,7 +53,7 @@ def create_book(request):
 def detail_book(request, book_slug):
     """ generating slug return """
     book = get_object_or_404(Book, slug=book_slug)
-    authors = book.author.all()
+    authors = book.authors.all()
     return render(request,
                   'basic_dj/detail_book.html',
                   {'book': book, 'authors': authors})
@@ -74,7 +74,7 @@ def create_author(request):
 
 
 def book_list(request):
-    """ show list of books for authors """
+    """ Show list of books """
     books = Book.objects.all().order_by('-publication_date')
     paginator = Paginator(books, 2)      # show book list per page 2
     page = request.GET.get('page')
@@ -86,4 +86,9 @@ def book_list(request):
         # If page is out of range (e.g. 9999), deliver last page of results
         books = paginator.page(paginator.num_pages)
     return render_to_response('basic_dj/book_list.html',
-                              {'books': books})
+                              dict(books=books))
+
+
+# def detail_author_book(request):
+#     """ Show all books for particular author """
+#     
