@@ -4,7 +4,6 @@
 <div class="content">
 	<div class="row">
 		<div class="col-sm-offset-2 col-sm-8">
-		<p>Adding a book for {{ author.first_name }}</p>
 			<form class="form-horizontal" action="." method="post" role="form">
 				{% csrf_token %}
 				<div class="form-registered-heading">Book Register Here</div>
@@ -21,5 +20,4 @@
 		</div>
 	</div>
 </div>
-
 {% endblock %}
