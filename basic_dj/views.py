@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template.loader import render_to_string
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import PublisherForm, BookForm, AuthorForm
-from .models import Publisher, Book
+from .models import Publisher, Author, Book
 
 
 def create_publisher(request):
@@ -89,6 +89,8 @@ def book_list(request):
                               dict(books=books))
 
 
-# def detail_author_book(request):
+# def author_books_list(request, author_slug):
 #     """ Show all books for particular author """
-#     
+#     author = get_object_or_404(Author, slug=author_slug)
+#     return render_to_response('basic_dj/author_books_list.html',
+#                               dict(author=author))
