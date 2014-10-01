@@ -35,11 +35,16 @@ class Author(models.Model):
     """ Author credentials """
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=4)
-    email = models.EmailField(blank=True)
-    author_slug = models.SlugField(unique=True)
+    email = models.EmailField(unique=True)
+    slug = models.SlugField(unique=True)
 
     def __unicode__(self):
         return "%s - %s" % (self.first_name, self.last_name)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            unique_slugify(self, self.email)
+        return super(Author, self).save(*args, **kwargs)
 
 
 class Book(models.Model):

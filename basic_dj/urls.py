@@ -11,4 +11,7 @@ urlpatterns = patterns('basic_dj.views',
                            'detail_book', name='detail_book'),
                        url(r'^create-author/$',
                            'create_author', name='create_author'),
-                       url(r'^books/$', 'book_list', name='book_list'), )
+                       url(r'^books/$', 'book_list', name='book_list'),
+                       url(r'^books/author/(?P<author_slug>[-\w]+)/$',
+                           'author_books_list',
+                           name='author_books_list'), )

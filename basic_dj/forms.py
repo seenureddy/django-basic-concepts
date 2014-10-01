@@ -20,4 +20,4 @@ class AuthorForm(forms.ModelForm):
 
     class Meta:
         model = Author
-        exclude = ('author_slug', )
+        exclude = ('slug', )
