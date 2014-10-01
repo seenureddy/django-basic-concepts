@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template.loader import render_to_string
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import PublisherForm, BookForm, AuthorForm
-from .models import Publisher, Author, Book
+from .models import Publisher, Book
 
 
 def create_publisher(request):
