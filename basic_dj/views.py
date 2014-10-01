@@ -90,8 +90,17 @@ def book_list(request):
 
 
 def author_books_list(request, author_slug):
-    """ Show all books for particular author """
+    """ Show all books written by an author """
     author = get_object_or_404(Author, slug=author_slug)
     author_books = author.books.all()
     return render_to_response('basic_dj/author_books_list.html',
                               dict(author=author, author_books=author_books))
+
+
+def publisher_books_list(request, publisher_slug):
+    """ Show all Books published by a publisher """
+    publisher = get_object_or_404(Publisher, slug=publisher_slug)
+    publisher_books = publisher.books.all()
+    return render_to_response('basic_dj/publisher_books_list.html',
+                              dict(publisher=publisher,
+                                   publisher_books=publisher_books))

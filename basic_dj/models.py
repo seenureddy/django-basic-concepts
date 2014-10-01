@@ -51,7 +51,7 @@ class Book(models.Model):
     """ Book credentials """
     title = models.CharField(max_length=100)
     authors = models.ManyToManyField(Author, related_name='books')
-    publisher = models.ForeignKey(Publisher)
+    publisher = models.ForeignKey(Publisher, related_name='books')
     publication_date = models.DateField()
     objects = BookManager()
     slug = models.SlugField(unique=True)
