@@ -5,5 +5,4 @@ django-jsonfield==0.9.13
 psycopg2==2.5.4
 six==1.8.0
 wsgiref==0.1.2
-django-pagination==1.0.7
 
