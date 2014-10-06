@@ -2,7 +2,7 @@ from django.db import models
 from .slugify import unique_slugify
 
 
-class BookManager(models.Model):
+class BookManager(models.Manager):
     """ Book title counts """
     def title_count(self, keyword):
         return self.filter(title__icontains=keyword).count()
