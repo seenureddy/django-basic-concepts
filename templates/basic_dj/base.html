@@ -9,10 +9,13 @@
             <p class="col-sm-offset-7 col-sm-5">Welcome {{ user }}!</p>
         {% endif %}
         {% block content %} {% endblock %}
-        <div id="footer">
-            {% block footer %}
-                &copy; copright 2014
-            {% endblock %}
+        
+        <div class="panel-default ">
+            <div class="panel-footer">
+                    {% block footer %}
+                        &copy; copright 2014
+                    {% endblock %}
+            </div>
         </div>
     </body>
 </html>
