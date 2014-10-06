@@ -1,12 +1,12 @@
-from django.http import HttpResponseRedirect, HttpResponseNotFound
+from django.conf import settings
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
-from django.shortcuts import get_object_or_404, render_to_response
 from django.template.loader import render_to_string
+from django.http import HttpResponseRedirect, HttpResponseNotFound
+from django.shortcuts import get_object_or_404, render_to_response
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.conf import settings
-from .forms import PublisherForm, BookForm, AuthorForm
 from .models import Publisher, Author, Book
+from .forms import PublisherForm, BookForm, AuthorForm
 
 
 def create_publisher(request):
@@ -107,5 +107,5 @@ def publisher_books_list(request, publisher_slug):
                                    publisher_books=publisher_books))
 
 
-# def index(request):
-#     return render(request, 'basic_dj/home.html')
+def index(request):
+    return render(request, 'basic_dj/home.html')
