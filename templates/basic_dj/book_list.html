@@ -11,11 +11,11 @@
 	{% endfor %}
 	{% if books.object_list and books.paginator.num_pages > 1 %}
 		{% if books.has_previous %}
-	         <a href="?page={{ books.previous_page_number }}">previous &lt;&lt;</a>
+	         <ul class="pager"><a href="?page={{ books.previous_page_number }}">&laquo; previous </a>
 		{% endif %}
 		&nbsp; Page {{ books.number }} of {{ books.paginator.num_pages }}
 		{% if books.has_next %}
-			<a href="?page={{ books.next_page_number }}">next &gt; &gt;</a>
+			<a href="?page={{ books.next_page_number }}">next &raquo;</a></ul>
 		{% endif %}
 	{% endif %}
 </div>
