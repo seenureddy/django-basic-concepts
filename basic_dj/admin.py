@@ -1,6 +1,5 @@
 from django.contrib import admin
-
-from basic_dj.models import Publisher, Author, Book
+from .models import Publisher, Author, Book
 
 
 class PublisherAdmin(admin.ModelAdmin):
