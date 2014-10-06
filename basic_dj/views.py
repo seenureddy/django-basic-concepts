@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template.loader import render_to_string
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.conf import settings
 from .forms import PublisherForm, BookForm, AuthorForm
 from .models import Publisher, Author, Book
 
@@ -75,7 +76,8 @@ def create_author(request):
 def book_list(request):
     """ Show list of books """
     books = Book.objects.all().order_by('-publication_date')
-    paginator = Paginator(books, 2)      # show book list per page 2
+    paginated_by = getattr(settings, 'BOOKS_PER_PAGE', 4)
+    paginator = Paginator(books, paginated_by)      # show book list per page 2
     page = request.GET.get('page')
     try:
         books = paginator.page(page)
