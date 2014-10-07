@@ -2,6 +2,7 @@ from django.conf import settings
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import get_object_or_404, render_to_response
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -9,6 +10,7 @@ from .models import Publisher, Author, Book
 from .forms import PublisherForm, BookForm, AuthorForm
 
 
+@login_required
 def create_publisher(request):
     """ creates publisher form """
     # if request.method == 'GET':
@@ -34,6 +36,7 @@ def error404(request):
     return HttpResponseNotFound(render_to_string('404.html'))
 
 
+@login_required
 def create_book(request):
     """ creates Book form """
     # author_id = int(request.GET['author'])
@@ -59,6 +62,7 @@ def detail_book(request, book_slug):
                   {'book': book})
 
 
+@login_required
 def create_author(request):
     """ creating author """
     author_form = AuthorForm()
