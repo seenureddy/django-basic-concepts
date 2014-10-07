@@ -3,11 +3,8 @@
 {% block content %}
 <div class="publisher-books-list">
     <h3>{{ publisher.name }}</h3>
-    <form action="." method="post">
-    	{% csrf_token %}
-    	{% for books in publisher_books %}
-    	    <ul>{{ books }}</ul>
+    	{% for book in publisher_books %}
+    	    <ul>{{ book }}</ul>
     	{% endfor %}
-    </form>	
 </div>
 {% endblock %}
