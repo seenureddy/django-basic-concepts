@@ -108,4 +108,5 @@ def publisher_books_list(request, publisher_slug):
 
 
 def index(request):
+    """ Created index page to show all url for Publisher, Author, Book """
     return render(request, 'basic_dj/home.html')
