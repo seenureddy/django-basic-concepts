@@ -28,6 +28,7 @@ class PublisherViewTest(TestCase):
         self._login()
         testfile = tempfile.TemporaryFile()
         testfile.write('Some data happy life')
+        testfile.seek(0)
         response = self.client.post(reverse('create_publisher'),
                                     {'name': 'test',
                                      'address': '4/333 Telengana Hyderabad',
