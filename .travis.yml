@@ -4,7 +4,7 @@ python:
   - 2.7
 
 env:
-    - SECRET_KEY_CONCEPT_DJ = "test" 
+  - SECRET_KEY_CONCEPT_DJ=test
 install:
     - pip install --use-mirrors -r requirements/local.txt
 
