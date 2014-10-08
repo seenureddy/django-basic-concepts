@@ -10,4 +10,4 @@ before_script:
   - ./lint.sh
 
 script:
-  - nosetests
+  - python manage.py test basic_dj.test
