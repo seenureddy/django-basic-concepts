@@ -1,10 +1,11 @@
 {% extends "basic_dj/base.html" %}
 
 {% block content %}
-<h1>Create publisher</h1>
-<a href="{% url 'create_publisher' %}">create publisher</a>
-<h1>Create Author</h1>
-<a href="{% url 'create_author' %}">create author</a>
-<h1>Create Book</h1>
-<a href="{% url 'create_book'%}">create book</a>
+<h1>Publisher Links: </h1>
+<ul><a href="{% url 'create_publisher' %}">create publisher</a></ul>
+<h1>Author Links: </h1>
+<ul><a href="{% url 'create_author' %}">create author</a></ul>
+<h1>Book Links: </h1>
+<ul><a href="{% url 'create_book'%}">create book</a></ul>
+<ul><a href="{% url 'book_list' %}">Show all books</a></ul>
 {% endblock %}

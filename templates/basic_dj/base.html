@@ -5,9 +5,14 @@
         <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css">
     </head>
     <body>
-        {% if user.is_authenticated %}
-            <p class="col-sm-offset-7 col-sm-5">Welcome {{ user }}!</p>
-        {% endif %}
+        <div class="container">
+            <div class="row">
+                {% if user.is_authenticated %}
+                    <p class="col-sm-offset-7 col-sm-5"><span class="glyphicon glyphicon-user">&#32; Welcome {{ user }}!<a href="#"><span class="glyphicon glyphicon-log-in"></span></a></span></p>
+                {% endif %}
+                <a class="col-sm-offset-7 col-sm-5" href="logout"><span class="glyphicon glyphicon-log-out"></span>&#32;logout</a>
+            </div>
+        </div>
         {% block content %} {% endblock %}
         
         <div class="panel-default ">
