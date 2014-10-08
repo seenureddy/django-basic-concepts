@@ -3,6 +3,8 @@ language: python
 python:
   - 2.7
 
+env:
+    - SECRET_KEY_CONCEPT_DJ = "test" 
 install:
     - pip install --use-mirrors -r requirements/local.txt
 
@@ -10,4 +12,4 @@ before_script:
   - ./lint.sh
 
 script:
-  - python manage.py test basic_dj.test
+  - python manage.py test basic_dj.tests
