@@ -8,9 +8,11 @@
         <div class="container">
             <div class="row">
                 {% if user.is_authenticated %}
-                    <p class="col-sm-offset-7 col-sm-5"><span class="glyphicon glyphicon-user">&#32; Welcome {{ user }}!<a href="#"><span class="glyphicon glyphicon-log-in"></span></a></span></p>
+                    <ul class="nav navbar-nav top-right">
+                    <p class="col-sm-offset-8 col-sm-4"><span class="glyphicon glyphicon-user">&#32; Welcome {{ user }}!<a href="#"><span class="glyphicon glyphicon-log-in"></span></a></span></p></ul>
                 {% endif %}
-                <a class="col-sm-offset-7 col-sm-5" href="logout"><span class="glyphicon glyphicon-log-out"></span>&#32;logout</a>
+                  <ul class="nav navbar-nav top-right">
+                <a class="col-sm-offset-7 col-sm-5" href="logout"><span class="glyphicon glyphicon-log-out"></span>&#32;logout</a></ul>
             </div>
         </div>
         {% block content %} {% endblock %}
@@ -18,7 +20,7 @@
         <div class="panel-default ">
             <div class="panel-footer">
                     {% block footer %}
-                        &copy; copright 2014
+                        &copy; dagger 2014
                     {% endblock %}
             </div>
         </div>

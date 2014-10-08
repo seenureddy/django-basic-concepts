@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.shortcuts import render
+from django.template import RequestContext
 from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
@@ -91,7 +92,8 @@ def book_list(request):
         # If page is out of range (e.g. 99), deliver last page of results
         books = paginator.page(paginator.num_pages)
     return render_to_response('basic_dj/book_list.html',
-                              dict(books=books))
+                              dict(books=books),
+                              context_instance=RequestContext(request))
 
 
 def author_books_list(request, author_slug):
