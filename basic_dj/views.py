@@ -101,7 +101,8 @@ def author_books_list(request, author_slug):
     author = get_object_or_404(Author, slug=author_slug)
     author_books = author.books.all()
     return render_to_response('basic_dj/author_books_list.html',
-                              dict(author=author, author_books=author_books))
+                              dict(author=author, author_books=author_books),
+                              context_instance=RequestContext(request))
 
 
 def publisher_books_list(request, publisher_slug):
