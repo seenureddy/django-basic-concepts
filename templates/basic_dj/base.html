@@ -9,10 +9,14 @@
             <div class="row">
                 {% if user.is_authenticated %}
                     <ul class="nav navbar-nav top-right">
-                    <p class="col-sm-offset-8 col-sm-4"><span class="glyphicon glyphicon-user">&#32; Welcome {{ user }}!<a href="#"><span class="glyphicon glyphicon-log-in"></span></a></span></p></ul>
+                        <p class="col-sm-offset-8 col-sm-4">
+                            <span class="glyphicon glyphicon-user">&#32; Welcome {{ user }}!<a href="#"><span class="glyphicon glyphicon-log-in"></span></a></span>
+                            &nbsp;<a href="{% url 'admin:logout' %}">&#32;logout<span class="glyphicon glyphicon-log-out"></span></a>
+                        </p>
+                    </ul> 
+                {% else %}
+                   <p class="col-sm-offset-7 col-sm-3">welcome guest! &nbsp; <a href="{% url 'admin:index' %}"><span class="glyphicon glyphicon-log-in"></span>&#32;login</a></p>
                 {% endif %}
-                  <ul class="nav navbar-nav top-right">
-                <a class="col-sm-offset-7 col-sm-5" href="logout"><span class="glyphicon glyphicon-log-out"></span>&#32;logout</a></ul>
             </div>
         </div>
         {% block content %} {% endblock %}
