@@ -4,15 +4,15 @@
     <div class="books">
         {% if books.objects_list %}
             {% for book in books.object_list %}
-                 <div class="title col-sm-12"><h4>Book Title: {{ book.title|upper }}</h4></div>
-                 <ul>
+                <div class="title col-sm-12"><h4>Book Title: {{ book.title|upper }}</h4></div>
+                <ul>
                     <div class="time">Published Date: {{ book.publication_date }}</div>
                     <div class="publisher">Publisher: {{ book.publisher }}</div>
-                 </ul>
+                </ul>
             {% endfor %}
         {% else %}
-        <p>No books availabel.</p>
-    {% endif %}
+            <p>No books availabel.</p>
+        {% endif %}
         {% if books.object_list and books.paginator.num_pages > 1 %}
             <ul class="pager">
                 {% if books.has_previous %}
