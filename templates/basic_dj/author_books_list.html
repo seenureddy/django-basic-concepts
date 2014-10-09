@@ -2,13 +2,21 @@
 
 {% block content %}
 <div class="author-books-list">
-    <h3> {{ author.first_name }} {{ author.last_name }}</h3>
-    	{% if author_books %}
-	    	{% for book in author_books %}
-	    	    <ul>{{ book }}</ul>
-	    	{% endfor %}
-    	{% else %}
-	    	<p>No books for this author.</p>
-    	{% endif %}
+	{% if author_books %}
+	    <h3> {{ author.first_name }} {{ author.last_name }}</h3>
+    	{% for book in author_books %}
+    	    <ul>{{ book }}</ul>
+    	{% endfor %}
+	{% else %}
+	    <div class="leftblock">
+	    	<h1>No books by this author</h1>
+    	    <div class="postcontent">
+	    	    <p>
+	    	    	<br />
+	    	    	{{ author }} has not written any books yet.
+	    	    </p>
+    	    </div>
+	    </div>
+	{% endif %}
 </div>
 {% endblock %}
