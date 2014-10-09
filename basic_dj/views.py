@@ -111,7 +111,8 @@ def publisher_books_list(request, publisher_slug):
     publisher_books = publisher.books.all()
     return render_to_response('basic_dj/publisher_books_list.html',
                               dict(publisher=publisher,
-                                   publisher_books=publisher_books))
+                                   publisher_books=publisher_books),
+                              context_instance=RequestContext(request))
 
 
 def index(request):

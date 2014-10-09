@@ -2,9 +2,18 @@
 
 {% block content %}
 <div class="publisher-books-list">
-    <h3>{{ publisher.name }}</h3>
-    	{% for book in publisher_books %}
-    	    <ul>{{ book }}</ul>
-    	{% endfor %}
+	{% for book in publisher_books %}
+	    <h3>{{ publisher.name }}</h3>
+	    <ul>{{ book }}</ul>
+	{% endfor %}
+	<div class="leftblock">
+    	<h1>No books by this publisher</h1>
+	    <div class="postcontent">
+    	    <p>
+    	    	<br />
+    	    	{{ publisher|upper }} has not published any books yet.
+    	    </p>
+	    </div>
+    </div>
 </div>
 {% endblock %}
