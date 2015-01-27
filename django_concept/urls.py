@@ -7,7 +7,8 @@ admin.autodiscover()
 handler404 = 'basic_dj.views.error404'
 urlpatterns = patterns('',
                        url(r'^admin/', include(admin.site.urls)),
-                       url(r'^library/', include('basic_dj.urls')), )
+                       url(r'^library/', include('basic_dj.urls')),
+                       url(r'^$', 'django_concept.views.home', name='home'), )
 
 urlpatterns += static(settings.MEDIA_URL,
                       document_root=settings.MEDIA_ROOT)
