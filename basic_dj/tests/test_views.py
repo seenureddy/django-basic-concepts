@@ -38,3 +38,5 @@ class PublisherViewTest(TestCase):
                                      'website': 'https://www.google.com',
                                      'publisher_file': testfile})
         self.assertEqual(response.status_code, 302)
+
+    # def test_detail_publisher(self):
