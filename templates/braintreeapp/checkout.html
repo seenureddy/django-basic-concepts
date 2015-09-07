@@ -1,0 +1,16 @@
+<html>
+	<head>
+		
+    <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+    <script>
+	    var client_token = "{{client_token}}";
+	    braintree.setup(client_token, "dropin", {container: 'dropin'});
+    </script>
+	</head>
+	<body>
+		<form id="checkout" method="post" action="/braintree/checkout/">
+		  <div id="dropin"></div>
+		  <input type="submit" value="Pay $10">
+		</form>
+    </body>
+</html>

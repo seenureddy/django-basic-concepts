@@ -31,7 +31,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'basic_dj',
-    'south',
+    'braintreeapp',
 
 )
 
@@ -117,3 +117,14 @@ TEMPLATE_LOADERS = (
 )
 
 BOOKS_PER_PAGE = 2
+
+import braintree
+
+# Braintree setup
+braintree.Configuration.configure(
+    braintree.Environment.Sandbox,
+    'n3dpfpsq8g5kxjd9',
+    'twg3bbn7gvr5hkx8',
+    'd58ab5ab6fbc08663863f7253d09ad69'
+)
+
