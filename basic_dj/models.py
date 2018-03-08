@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from .slugify import unique_slugify
-
+from .storage import upload_document
 
 class TimeStampedModel(models.Model):
     """
@@ -31,7 +31,7 @@ class Publisher(TimeStampedModel):
     country = models.CharField(max_length=50)
     website = models.URLField()
     slug = models.SlugField(unique=True)
-    publisher_file = models.FileField(upload_to='publisher_upload_file_name')
+    publisher_file = models.FileField(upload_to=upload_document)
 
     def __unicode__(self):
         return self.name
@@ -40,9 +40,6 @@ class Publisher(TimeStampedModel):
         if not self.slug:
             unique_slugify(self, self.name)
         return super(Publisher, self).save(*args, **kwargs)
-
-    def publisher_upload_file_name(self):
-        return '/'.join('content', self.name)  # noqa
 
 
 class Author(models.Model):
