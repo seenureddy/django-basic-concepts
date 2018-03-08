@@ -1,7 +1,7 @@
 -r base.txt
 
 dj-database-url==0.3.0
-django-extensions==1.4.0
+django-extensions
 pep8==1.5.7
 pylint
 codecov<2.1,>=2.0.5

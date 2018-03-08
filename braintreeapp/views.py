@@ -9,7 +9,6 @@ import json
 
 @login_required
 def clienttoken(request):
-    import ipdb; ipdb.set_trace()
     result = braintree.Customer.create({
         "first_name": "Jen",
         "last_name": "Smith",
@@ -34,7 +33,6 @@ def clienttoken(request):
 
 @csrf_exempt
 def checkout(request):
-    import ipdb; ipdb.set_trace()
     customer_id = request.session['customer_id']
     nonce = request.POST['payment_method_nonce']
     # result = braintree.Customer.create({

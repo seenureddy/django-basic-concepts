@@ -1,5 +1,19 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
+
 from .slugify import unique_slugify
+
+
+class TimeStampedModel(models.Model):
+    """
+    An abstract base class model that provides self-updating
+    ``created`` and ``modified`` fields.
+    """
+    created_at = models.DateTimeField(_('created'), auto_now_add=True, editable=False)
+    modified_at = models.DateTimeField(_('modified'), auto_now=True)
+
+    class Meta:
+        abstract = True
 
 
 class BookManager(models.Manager):
@@ -8,7 +22,7 @@ class BookManager(models.Manager):
         return self.filter(title__icontains=keyword).count()
 
 
-class Publisher(models.Model):
+class Publisher(TimeStampedModel):
     """ Create Publisher with their credentials """
     name = models.CharField(max_length=30)
     address = models.CharField(max_length=50)
@@ -27,8 +41,8 @@ class Publisher(models.Model):
             unique_slugify(self, self.name)
         return super(Publisher, self).save(*args, **kwargs)
 
-    def publisher_upload_file_name(self, publisher_doc):
-        return '/'.join('content', self.name, publisher_doc)
+    def publisher_upload_file_name(self):
+        return '/'.join('content', self.name)  # noqa
 
 
 class Author(models.Model):
