@@ -22,7 +22,7 @@ class Publisher(models.Model):
     def __unicode__(self):
         return self.name
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs):  # pylint: disable=W:279
         if not self.slug:
             unique_slugify(self, self.name)
         return super(Publisher, self).save(*args, **kwargs)
@@ -41,7 +41,7 @@ class Author(models.Model):
     def __unicode__(self):
         return "%s - %s" % (self.first_name, self.last_name)
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs):  # noqa
         if not self.slug:
             unique_slugify(self, self.email)
         return super(Author, self).save(*args, **kwargs)
@@ -59,7 +59,7 @@ class Book(models.Model):
     def __unicode__(self):
         return self.title
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs):  # noqa
         if not self.slug:
             unique_slugify(self, self.title)
         return super(Book, self).save(*args, **kwargs)

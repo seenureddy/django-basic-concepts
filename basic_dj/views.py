@@ -1,6 +1,5 @@
 from django.conf import settings
 from django.shortcuts import render
-from django.template import RequestContext
 from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
@@ -92,8 +91,7 @@ def book_list(request):
         # If page is out of range (e.g. 99), deliver last page of results
         books = paginator.page(paginator.num_pages)
     return render_to_response('basic_dj/book_list.html',
-                              dict(books=books),
-                              context_instance=RequestContext(request))
+                              dict(books=books))
 
 
 def author_books_list(request, author_slug):
@@ -101,18 +99,16 @@ def author_books_list(request, author_slug):
     author = get_object_or_404(Author, slug=author_slug)
     author_books = author.books.all()
     return render_to_response('basic_dj/author_books_list.html',
-                              dict(author=author, author_books=author_books),
-                              context_instance=RequestContext(request))
+                              dict(author=author, author_books=author_books))
 
 
 def publisher_books_list(request, publisher_slug):
     """ Show all Books published by a publisher """
     publisher = get_object_or_404(Publisher, slug=publisher_slug)
     publisher_books = publisher.books.all()
-    return render_to_response('basic_dj/publisher_books_list.html',
-                              dict(publisher=publisher,
-                                   publisher_books=publisher_books),
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'basic_dj/publisher_books_list.html',
+        dict(publisher=publisher, publisher_books=publisher_books))
 
 
 def index(request):

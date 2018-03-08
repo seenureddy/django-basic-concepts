@@ -1,6 +1,6 @@
 [run]
 branch=True
-source=django_markdown
+source=django-basic-concepts
 
 [report]
 precision = 2
