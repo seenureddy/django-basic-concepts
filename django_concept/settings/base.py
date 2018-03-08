@@ -127,4 +127,3 @@ braintree.Configuration.configure(
     'twg3bbn7gvr5hkx8',
     'd58ab5ab6fbc08663863f7253d09ad69'
 )
-

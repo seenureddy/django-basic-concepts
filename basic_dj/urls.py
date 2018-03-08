@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from basic_dj.views import (
-    index, create_publisher, book_list, detail_publisher,\
-    detail_book, publisher_books_list, author_books_list, create_book,\
+    index, create_publisher, book_list, detail_publisher,
+    detail_book, publisher_books_list, author_books_list, create_book,
     create_author
 )
 

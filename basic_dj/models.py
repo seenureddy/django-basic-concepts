@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from .slugify import unique_slugify
 from .storage import upload_document
 
+
 class TimeStampedModel(models.Model):
     """
     An abstract base class model that provides self-updating
