@@ -1,7 +1,7 @@
-Django>=1.8, <1.9
+Django>=1.11, <=1.8
 argparse==1.2.1
 django-jsonfield==0.9.13
-psycopg2==2.5.4
+psycopg2==2.7.3
 six==1.8.0
 wsgiref==0.1.2
 braintree==3.13.0
